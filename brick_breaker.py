@@ -48,15 +48,10 @@ class Paddle:
 			self.x = screenX - self.width
 
 
-<<<<<<< 26e2e44ac4fbbc647a49010077f6edfaaebb6bf9
+
 playerPaddle = Paddle(	X = screenX//2 - screenX*0.2//2, 
 						Y = 0.95 * screenY, 
 						velX = 15,
-=======
-playerPaddle = Paddle(	X = screenX//2 - screenX*0.2//2,
-						Y = 0.9 * screenY,
-						velX = 10,
->>>>>>> Added Brick Class
 						width = screenX*0.2,
 						height = screenY*0.02
 					)
@@ -85,7 +80,7 @@ class Ball:
 		if self.x - self.radius < 0:
 			self.currVelX = self.velX
 
-		if self.y + self.radius > screenY or self.bodyRect.colliderect(playerPaddle.paddleRect) or self.bodyRect.colliderect(Brick.BrickRect):
+		if self.y + self.radius > screenY or self.bodyRect.colliderect(playerPaddle.paddleRect) or self.bodyRect.colliderect(brick.brickRect):
 			self.currVelY = -self.velY
 
 
@@ -111,14 +106,14 @@ class Brick:
 		self.y = Y
 		self.width = width
 		self.height = height
-		self.BrickRect = pygame.draw.rect(screen, PADDLE_COLOR, (int(self.x), int(self.y), int(self.width), int(self.height)))
+		self.brickRect = pygame.draw.rect(screen, PADDLE_COLOR, (int(self.x), int(self.y), int(self.width), int(self.height)))
 		# self.isLocked = False
 
 	def draw(self):
 		self.paddleRect = pygame.draw.rect(screen, PADDLE_COLOR, (int(self.x), int(self.y), int(self.width), int(self.height)))
 
 
-Brick = Brick(	X = screenX//2 - screenX*0.2//2,
+brick = Brick(	X = screenX//2 - screenX*0.2//2,
 						Y = 0.2 * screenY,
 						width = screenX*0.2,
 						height = screenY*0.02
@@ -153,7 +148,7 @@ def playGame():
 		screen.fill(BG_COLOR)
 		gameBall.draw()
 		playerPaddle.draw()
-		Brick.draw()
+		brick.draw()
 		pygame.display.update()
 		clock.tick(60)
 
@@ -179,11 +174,10 @@ def main():
 		screen.fill(BG_COLOR)
 		gameBall.draw()
 		playerPaddle.draw()
-		Brick.draw()
+		brick.draw()
 		pygame.display.update()
 		clock.tick(60)
 
 
 if __name__ == '__main__':
 	main()
-
