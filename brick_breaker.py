@@ -2,11 +2,11 @@
 import pygame, sys, os
 
 
-SCREEN_DIMENSIONS = screenX, screenY = (640,480)
+SCREEN_DIMENSIONS = screenX, screenY = (720, 480)
 BG_COLOR = (0,0,0)
 PADDLE_COLOR = (255,255,0)
 BALL_COLOR = (0, 0, 255)
-RADIUS = 12
+RADIUS = 10
 
 
 pygame.init()
@@ -48,10 +48,10 @@ class Paddle:
 
 
 playerPaddle = Paddle(	X = screenX//2 - screenX*0.2//2, 
-						Y = 0.9 * screenY, 
-						velX = 10,
+						Y = 0.95 * screenY, 
+						velX = 15,
 						width = screenX*0.2,
-						height = screenX*0.02
+						height = screenY*0.02
 					)
 
 
@@ -93,7 +93,10 @@ class Ball:
 		self.currVelX = self.velX
 		self.currVelY = self.velY
 
+
 gameBall = Ball(playerPaddle.x + playerPaddle.width//2, playerPaddle.y - RADIUS, 0, 0, RADIUS)
+
+
 
 
 def playGame():
