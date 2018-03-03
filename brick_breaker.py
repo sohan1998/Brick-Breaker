@@ -8,6 +8,7 @@ BG_COLOR = (0,0,0)
 PADDLE_COLOR = (255,255,0)
 BALL_COLOR = (0, 0, 255)
 RADIUS = 10
+BRICK_COLOR_1 = (255, 0, 0)
 
 
 pygame.init()
@@ -106,17 +107,17 @@ class Brick:
 		self.y = Y
 		self.width = width
 		self.height = height
-		self.brickRect = pygame.draw.rect(screen, PADDLE_COLOR, (int(self.x), int(self.y), int(self.width), int(self.height)))
+		self.brickRect = pygame.draw.rect(screen, BRICK_COLOR_1, (int(self.x), int(self.y), int(self.width), int(self.height)))
 		# self.isLocked = False
 
 	def draw(self):
-		self.paddleRect = pygame.draw.rect(screen, PADDLE_COLOR, (int(self.x), int(self.y), int(self.width), int(self.height)))
+		self.paddleRect = pygame.draw.rect(screen, BRICK_COLOR_1, (int(self.x), int(self.y), int(self.width), int(self.height)))
 
 
-brick = Brick(	X = screenX//2 - screenX*0.2//2,
+brick = Brick(	X = screenX//2 - 50//2,
 						Y = 0.2 * screenY,
-						width = screenX*0.2,
-						height = screenY*0.02
+						width = 50,
+						height = 20
 					)
 
 
