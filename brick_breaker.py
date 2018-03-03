@@ -48,15 +48,10 @@ class Paddle:
 			self.x = screenX - self.width
 
 
-<<<<<<< 26e2e44ac4fbbc647a49010077f6edfaaebb6bf9
+
 playerPaddle = Paddle(	X = screenX//2 - screenX*0.2//2, 
 						Y = 0.95 * screenY, 
 						velX = 15,
-=======
-playerPaddle = Paddle(	X = screenX//2 - screenX*0.2//2,
-						Y = 0.9 * screenY,
-						velX = 10,
->>>>>>> Added Brick Class
 						width = screenX*0.2,
 						height = screenY*0.02
 					)
