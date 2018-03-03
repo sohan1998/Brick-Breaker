@@ -5,16 +5,17 @@ import pygame, sys, os
 
 SCREEN_DIMENSIONS = screenX, screenY = (720, 480)
 BG_COLOR = (0,0,0)
-PADDLE_COLOR = (255,255,0)
-BALL_COLOR = (0, 0, 255)
+PADDLE_COLOR = (255, 147, 79)
+BALL_COLOR = (34, 170, 161)
 RADIUS = 10
-BRICK_COLOR_1 = (255, 0, 0)
+BRICK_COLOR_1 = (178,34,34)
 
 
 pygame.init()
 pygame.display.set_caption("Brick Breaker")
 screen = pygame.display.set_mode(SCREEN_DIMENSIONS)
 clock = pygame.time.Clock()
+pygame.mouse.set_visible(0)
 
 
 class Paddle:
@@ -84,10 +85,9 @@ class Ball:
 		if self.y + self.radius > screenY or self.bodyRect.colliderect(playerPaddle.paddleRect) or self.bodyRect.colliderect(brick.brickRect):
 			self.currVelY = -self.velY
 
-
-
 		if self.y - self.radius < 0:
 			self.currVelY = self.velY
+
 
 		self.x += self.currVelX
 		self.y += self.currVelY
@@ -101,8 +101,9 @@ class Ball:
 
 gameBall = Ball(playerPaddle.x + playerPaddle.width//2, playerPaddle.y - RADIUS, 0, 0, RADIUS)
 
-class Brick:
+class Brick(pygame.sprite.Sprite):
 	def __init__(self, X, Y,width, height):
+		pygame.sprite.Sprite.__init__(self)
 		self.x = X
 		self.y = Y
 		self.width = width
@@ -115,11 +116,13 @@ class Brick:
 
 
 brick = Brick(	X = screenX//2 - 50//2,
-						Y = 0.2 * screenY,
-						width = 50,
-						height = 20
-					)
+				Y = 0.2 * screenY,
+				width = 50,
+				height = 20
+			)
 
+# bricks = pygame.sprite.Group()
+# bricks.add(Brick(10,10,50,25))
 
 
 
@@ -168,7 +171,7 @@ def main():
 			sys.exit()
 
 		if keyPressed[pygame.K_SPACE]:
-			gameBall.set_velocity(10, 10)
+			gameBall.set_velocity(8, 8)
 			playGame()
 
 		gameBall.update_position()
